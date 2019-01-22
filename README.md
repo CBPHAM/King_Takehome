@@ -63,9 +63,14 @@ Test Reports
 We can specific where reports go on the command line for Robot Framework.  See documentation for example. 
 For the purpose of simplifying this takehome, test reports gets generated in the root of the folder where you are running the test.
 I have included a folder "results" where I have placed a sample of the result that I have run locally.  
+Once you clone the repo, you can view report.html or log.html on any browser. 
 				
 Executing tests
 ===============
 Executing a single test suite:
-		King_Takehome> sudo robot -P config:libraries:resources:resources_ui tests/flight_bookings/book_roundtrip_flight.robot
-		
+    King_Takehome> sudo robot -P config:libraries:resources:resources_ui tests/flight_bookings/book_roundtrip_flight.robot
+Executing a tests with browser specified:
+    King_Takehome> sudo robot -P config:libraries:resources:resources_ui --variable BROWSER:Chrome tests/flight_bookings/book_roundtrip_flight.robot
+    King_Takehome> sudo robot -P config:libraries:resources:resources_ui --variable BROWSER:Firefox tests/flight_bookings/book_roundtrip_flight.robot
+* Note: Pre-requisite for browser is that you have to have the drivers installed correctly.    
+    
