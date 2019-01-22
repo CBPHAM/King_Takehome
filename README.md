@@ -45,18 +45,18 @@ Eclipse RED Robot Framework Plugin - https://github.com/nokia/RED/blob/master/in
 
 Folder Structure
 ===============
-├── King_Takehome 
-	├── config - Configurations specific to test environment (browser, timeouts, etc)
-	├── libraries - Python code to support test libraries
-	├── resources - Keyword resources necessary for execution (robot framework keywords)
-	├── resources_ui - Page Objects - ui elements mapping by page  
-	├── results - Sample results for a local run
-	    ├── log.html - Step by step report of tests 
-	    ├── report.html - Overall summary of tests (use this as starting point)
-	    ├── output.xml - xml output for the test run 
-	├── tests - contains all test suites organized by folders 
-		├── flight_bookings - test suites for flight bookings 
-		├── book_roundtrip_flight.robot (our main test is here)
+* King_Takehome  
+  * config - Configurations specific to test environment (browser, timeouts, etc)
+  * libraries - Python code to support test libraries
+  * resources - Keyword resources necessary for execution (robot framework keywords)
+  * resources_ui - Page Objects - ui elements mapping by page  
+  * results - Sample results for a local run
+    * log.html - Step by step report of tests 
+    * report.html - Overall summary of tests (use this as starting point)
+    * output.xml - xml output for the test run 
+  * tests - contains all test suites organized by folders 
+    * flight_bookings - test suites for flight bookings 
+      * book_roundtrip_flight.robot (our main test is here)
 
 Test Reports 
 ===============
