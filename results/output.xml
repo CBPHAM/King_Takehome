@@ -1,0 +1,1297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot rpa="false" generated="20190121 19:37:40.869" generator="Robot 3.1.1 (Python 2.7.10 on darwin)">
+<suite source="/Users/cbpham_macair/Desktop/cpham/EclipseWorkspace/King_Takehome/tests/flight_bookings/book_roundtrip_flight.robot" id="s1" name="Book Roundtrip Flight">
+<test id="s1-t1" name="Start Browser And Go To Southwest">
+<kw name="Go To Southwest Homepage And Verify" library="southwest_flight_booking">
+<arguments>
+<arg>${URL}</arg>
+</arguments>
+<kw name="Open Browser And Set Selenium Speed" library="southwest_flight_booking">
+<arguments>
+<arg>${URL}</arg>
+</arguments>
+<kw name="Open Browser" library="SeleniumLibrary">
+<doc>Opens a new browser instance to the given ``url``.</doc>
+<arguments>
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+</arguments>
+<msg timestamp="20190121 19:37:41.717" level="INFO">Opening browser 'Chrome' to base url 'http://www.southwest.com'.</msg>
+<status status="PASS" endtime="20190121 19:37:49.483" starttime="20190121 19:37:41.716"></status>
+</kw>
+<kw name="Set Selenium Speed" library="SeleniumLibrary">
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<arguments>
+<arg>${SEL_SPEED}</arg>
+</arguments>
+<status status="PASS" endtime="20190121 19:37:49.487" starttime="20190121 19:37:49.485"></status>
+</kw>
+<status status="PASS" endtime="20190121 19:37:49.488" starttime="20190121 19:37:41.715"></status>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>${TAB_FLIGHT}</arg>
+</arguments>
+<status status="PASS" endtime="20190121 19:37:50.026" starttime="20190121 19:37:49.489"></status>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>${TAB_HOTEL}</arg>
+</arguments>
+<status status="PASS" endtime="20190121 19:37:50.553" starttime="20190121 19:37:50.026"></status>
+</kw>
+<status status="PASS" endtime="20190121 19:37:50.553" starttime="20190121 19:37:41.714"></status>
+</kw>
+<tags>
+<tag>Book_Flight</tag>
+<tag>Southwest</tag>
+</tags>
+<status status="PASS" endtime="20190121 19:37:50.554" critical="yes" starttime="20190121 19:37:41.712"></status>
+</test>
+<test id="s1-t2" name="Select Passengers Required Tickets Needed">
+<kw name="Select Adult Passenger Count" library="southwest_flight_booking">
+<arguments>
+<arg>${PASSENGER_COUNT}</arg>
+</arguments>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>${TEXTBOX_ADULT_COUNT}</arg>
+</arguments>
+<msg timestamp="20190121 19:37:50.559" level="INFO">Clicking element 'id=air-pax-count-adults'.</msg>
+<status status="PASS" endtime="20190121 19:37:51.687" starttime="20190121 19:37:50.559"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>${adult_tickets_needed}-1</arg>
+</arguments>
+<assign>
+<var>${passenger_count_forward}</var>
+</assign>
+<msg timestamp="20190121 19:37:51.691" level="INFO">${passenger_count_forward} = 1</msg>
+<status status="PASS" endtime="20190121 19:37:51.691" starttime="20190121 19:37:51.688"></status>
+</kw>
+<kw type="for" name="${i} IN RANGE [ ${passenger_count_forward} ]">
+<kw type="foritem" name="${i} = 0">
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>${TEXTBOX_ADULT_COUNT_MORE}</arg>
+</arguments>
+<msg timestamp="20190121 19:37:51.693" level="INFO">Clicking element 'id=jb-number-selector-more'.</msg>
+<status status="PASS" endtime="20190121 19:37:52.790" starttime="20190121 19:37:51.692"></status>
+</kw>
+<status status="PASS" endtime="20190121 19:37:52.790" starttime="20190121 19:37:51.692"></status>
+</kw>
+<status status="PASS" endtime="20190121 19:37:52.790" starttime="20190121 19:37:51.691"></status>
+</kw>
+<kw name="Get Value" library="SeleniumLibrary">
+<doc>Returns the value attribute of element identified by ``locator``.</doc>
+<arguments>
+<arg>${TEXTBOX_ADULT_COUNT}</arg>
+</arguments>
+<assign>
+<var>${adult_count}</var>
+</assign>
+<msg timestamp="20190121 19:37:53.826" level="INFO">${adult_count} = 2</msg>
+<status status="PASS" endtime="20190121 19:37:53.827" starttime="20190121 19:37:52.791"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>AdultCount:${adult_count}</arg>
+</arguments>
+<msg timestamp="20190121 19:37:53.828" level="INFO">AdultCount:2</msg>
+<status status="PASS" endtime="20190121 19:37:53.828" starttime="20190121 19:37:53.827"></status>
+</kw>
+<kw name="Should Be Equal As Numbers" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<arguments>
+<arg>${adult_tickets_needed}</arg>
+<arg>${adult_count}</arg>
+</arguments>
+<status status="PASS" endtime="20190121 19:37:53.829" starttime="20190121 19:37:53.828"></status>
+</kw>
+<status status="PASS" endtime="20190121 19:37:53.830" starttime="20190121 19:37:50.557"></status>
+</kw>
+<tags>
+<tag>Book_Flight</tag>
+<tag>Southwest</tag>
+</tags>
+<status status="PASS" endtime="20190121 19:37:53.830" critical="yes" starttime="20190121 19:37:50.556"></status>
+</test>
+<test id="s1-t3" name="Pick Depart And Return Dates">
+<kw name="Choose Depart And Return Dates" library="southwest_flight_booking">
+<arguments>
+<arg>${DEPART_DATE}</arg>
+<arg>${RETURN_DATE}</arg>
+</arguments>
+<kw name="Calculate Datepicker Counts And Get Formatted Values" library="southwest_flight_booking">
+<arguments>
+<arg>${DEPART_DATE}</arg>
+<arg>${RETURN_DATE}</arg>
+</arguments>
+<kw name="Get Current Date" library="DateTime">
+<doc>Returns current local or UTC time with an optional increment.</doc>
+<arguments>
+<arg>result_format=%m/%d/%Y</arg>
+</arguments>
+<assign>
+<var>${current_date_formatted}</var>
+</assign>
+<msg timestamp="20190121 19:37:53.836" level="INFO">${current_date_formatted} = 01/21/2019</msg>
+<status status="PASS" endtime="20190121 19:37:53.836" starttime="20190121 19:37:53.835"></status>
+</kw>
+<kw name="Date Diff Months To Shift" library="southwest_date_helper">
+<doc>Simple function to take 2 dates (depart and return) in the format %m/%d/%Y and calculate
+the number of shift forward on the calendar picker.
+For example, given departure 05/23/2019 return 06/10/2019 this function will return 0
+We return the difference -1 because Southwest's calendar picker shows 2 months at a time.</doc>
+<arguments>
+<arg>${current_date_formatted}</arg>
+<arg>${DEPART_DATE}</arg>
+</arguments>
+<assign>
+<var>${months_forward_depart}</var>
+</assign>
+<msg timestamp="20190121 19:37:53.846" level="INFO">${months_forward_depart} = 3</msg>
+<status status="PASS" endtime="20190121 19:37:53.846" starttime="20190121 19:37:53.836"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${months_forward_depart}</arg>
+</arguments>
+<msg timestamp="20190121 19:37:53.847" level="INFO">${months_forward_depart} = 3</msg>
+<status status="PASS" endtime="20190121 19:37:53.847" starttime="20190121 19:37:53.846"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Months:[${months_forward_depart}]</arg>
+</arguments>
+<msg timestamp="20190121 19:37:53.848" level="INFO">Months:[3]</msg>
+<status status="PASS" endtime="20190121 19:37:53.848" starttime="20190121 19:37:53.847"></status>
+</kw>
+<kw name="Date Diff Months To Shift" library="southwest_date_helper">
+<doc>Simple function to take 2 dates (depart and return) in the format %m/%d/%Y and calculate
+the number of shift forward on the calendar picker.
+For example, given departure 05/23/2019 return 06/10/2019 this function will return 0
+We return the difference -1 because Southwest's calendar picker shows 2 months at a time.</doc>
+<arguments>
+<arg>${DEPART_DATE}</arg>
+<arg>${RETURN_DATE}</arg>
+</arguments>
+<assign>
+<var>${months_forward_return}</var>
+</assign>
+<msg timestamp="20190121 19:37:53.849" level="INFO">${months_forward_return} = 0</msg>
+<status status="PASS" endtime="20190121 19:37:53.849" starttime="20190121 19:37:53.848"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${months_forward_return}</arg>
+</arguments>
+<msg timestamp="20190121 19:37:53.850" level="INFO">${months_forward_return} = 0</msg>
+<status status="PASS" endtime="20190121 19:37:53.850" starttime="20190121 19:37:53.850"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Months:[${months_forward_return}]</arg>
+</arguments>
+<msg timestamp="20190121 19:37:53.851" level="INFO">Months:[0]</msg>
+<status status="PASS" endtime="20190121 19:37:53.851" starttime="20190121 19:37:53.850"></status>
+</kw>
+<kw name="Format My Date" library="southwest_date_helper">
+<doc>Simple function to take a date in the format %m/%d/%Y and convert it to a format that is used on Southwest's calendar picker. 
+For example, given date 05/23/2019 return may-23
+This is required to make sure that we pick the correct date on the date picker for departure and return date.</doc>
+<arguments>
+<arg>${DEPART_DATE}</arg>
+</arguments>
+<assign>
+<var>${format_date_depart}</var>
+</assign>
+<msg timestamp="20190121 19:37:53.852" level="INFO">${format_date_depart} = may-23</msg>
+<status status="PASS" endtime="20190121 19:37:53.852" starttime="20190121 19:37:53.851"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${format_date_depart}</arg>
+</arguments>
+<msg timestamp="20190121 19:37:53.852" level="INFO">${format_date_depart} = may-23</msg>
+<status status="PASS" endtime="20190121 19:37:53.852" starttime="20190121 19:37:53.852"></status>
+</kw>
+<kw name="Format My Date" library="southwest_date_helper">
+<doc>Simple function to take a date in the format %m/%d/%Y and convert it to a format that is used on Southwest's calendar picker. 
+For example, given date 05/23/2019 return may-23
+This is required to make sure that we pick the correct date on the date picker for departure and return date.</doc>
+<arguments>
+<arg>${RETURN_DATE}</arg>
+</arguments>
+<assign>
+<var>${format_date_return}</var>
+</assign>
+<msg timestamp="20190121 19:37:53.853" level="INFO">${format_date_return} = june-10</msg>
+<status status="PASS" endtime="20190121 19:37:53.853" starttime="20190121 19:37:53.853"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${format_date_return}</arg>
+</arguments>
+<msg timestamp="20190121 19:37:53.854" level="INFO">${format_date_return} = june-10</msg>
+<status status="PASS" endtime="20190121 19:37:53.854" starttime="20190121 19:37:53.853"></status>
+</kw>
+<status status="PASS" endtime="20190121 19:37:53.854" starttime="20190121 19:37:53.834"></status>
+</kw>
+<kw name="Select Depart Date" library="southwest_flight_booking">
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>${TEXTBOX_DEPART_DATE}</arg>
+</arguments>
+<msg timestamp="20190121 19:37:53.855" level="INFO">Clicking element 'id=air-date-departure'.</msg>
+<status status="PASS" endtime="20190121 19:37:55.123" starttime="20190121 19:37:53.854"></status>
+</kw>
+<kw type="for" name="${i} IN RANGE [ ${months_forward_depart} ]">
+<kw type="foritem" name="${i} = 0">
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>${BUTTON_DATEPICKER_NEXT}</arg>
+</arguments>
+<msg timestamp="20190121 19:37:55.125" level="INFO">Clicking element 'css=a.next.js-next'.</msg>
+<status status="PASS" endtime="20190121 19:37:56.378" starttime="20190121 19:37:55.125"></status>
+</kw>
+<status status="PASS" endtime="20190121 19:37:56.378" starttime="20190121 19:37:55.124"></status>
+</kw>
+<kw type="foritem" name="${i} = 1">
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>${BUTTON_DATEPICKER_NEXT}</arg>
+</arguments>
+<msg timestamp="20190121 19:37:56.380" level="INFO">Clicking element 'css=a.next.js-next'.</msg>
+<status status="PASS" endtime="20190121 19:37:57.601" starttime="20190121 19:37:56.379"></status>
+</kw>
+<status status="PASS" endtime="20190121 19:37:57.601" starttime="20190121 19:37:56.379"></status>
+</kw>
+<kw type="foritem" name="${i} = 2">
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>${BUTTON_DATEPICKER_NEXT}</arg>
+</arguments>
+<msg timestamp="20190121 19:37:57.602" level="INFO">Clicking element 'css=a.next.js-next'.</msg>
+<status status="PASS" endtime="20190121 19:37:58.839" starttime="20190121 19:37:57.601"></status>
+</kw>
+<status status="PASS" endtime="20190121 19:37:58.840" starttime="20190121 19:37:57.601"></status>
+</kw>
+<status status="PASS" endtime="20190121 19:37:58.840" starttime="20190121 19:37:55.124"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>id=calendar-${format_date_depart}</arg>
+</arguments>
+<msg timestamp="20190121 19:37:58.841" level="INFO">Clicking element 'id=calendar-may-23'.</msg>
+<status status="PASS" endtime="20190121 19:37:59.984" starttime="20190121 19:37:58.840"></status>
+</kw>
+<status status="PASS" endtime="20190121 19:37:59.984" starttime="20190121 19:37:53.854"></status>
+</kw>
+<kw name="Select Return Date" library="southwest_flight_booking">
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>${TEXTBOX_RETURN_DATE}</arg>
+</arguments>
+<msg timestamp="20190121 19:37:59.986" level="INFO">Clicking element 'id=air-date-return'.</msg>
+<status status="PASS" endtime="20190121 19:38:01.219" starttime="20190121 19:37:59.986"></status>
+</kw>
+<kw type="for" name="${i} IN RANGE [ ${months_forward_return} ]">
+<status status="PASS" endtime="20190121 19:38:01.220" starttime="20190121 19:38:01.219"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>id=calendar-${format_date_return}</arg>
+</arguments>
+<msg timestamp="20190121 19:38:01.223" level="INFO">Clicking element 'id=calendar-june-10'.</msg>
+<status status="PASS" endtime="20190121 19:38:02.355" starttime="20190121 19:38:01.221"></status>
+</kw>
+<status status="PASS" endtime="20190121 19:38:02.356" starttime="20190121 19:37:59.985"></status>
+</kw>
+<status status="PASS" endtime="20190121 19:38:02.356" starttime="20190121 19:37:53.832"></status>
+</kw>
+<tags>
+<tag>Book_Flight</tag>
+<tag>Southwest</tag>
+</tags>
+<status status="PASS" endtime="20190121 19:38:02.357" critical="yes" starttime="20190121 19:37:53.831"></status>
+</test>
+<test id="s1-t4" name="Select Departure Airport From Search For San Francisco - OAK">
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>${TEXTBOX_DEPARTURE}</arg>
+<arg>San Francisco</arg>
+</arguments>
+<msg timestamp="20190121 19:38:02.361" level="INFO">Typing text 'San Francisco' into text field 'id=air-city-departure'.</msg>
+<status status="PASS" endtime="20190121 19:38:04.239" starttime="20190121 19:38:02.360"></status>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes screenshot of the current page and embeds it into log file.</doc>
+<msg timestamp="20190121 19:38:05.162" html="yes" level="INFO">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-1.png"&gt;&lt;img src="selenium-screenshot-1.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" endtime="20190121 19:38:05.162" starttime="20190121 19:38:04.240"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>${TEXTBOX_DEPARTURE}</arg>
+</arguments>
+<msg timestamp="20190121 19:38:05.164" level="INFO">Clicking element 'id=air-city-departure'.</msg>
+<status status="PASS" endtime="20190121 19:38:06.258" starttime="20190121 19:38:05.163"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath=id('${ID_AIRPORT_DEPARTURE}')/li[contains(text(),'${DEPART_CITY}')]</arg>
+</arguments>
+<msg timestamp="20190121 19:38:06.260" level="INFO">Clicking element 'xpath=id('air-city-departure-menu')/li[contains(text(),'Oakland')]'.</msg>
+<status status="PASS" endtime="20190121 19:38:07.350" starttime="20190121 19:38:06.259"></status>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes screenshot of the current page and embeds it into log file.</doc>
+<msg timestamp="20190121 19:38:08.240" html="yes" level="INFO">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-2.png"&gt;&lt;img src="selenium-screenshot-2.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" endtime="20190121 19:38:08.240" starttime="20190121 19:38:07.350"></status>
+</kw>
+<doc>Here we are highlighting the feature of searching for a city
+and selecting an airport from the search list returned.
+We are searching for "San Francisco" and picking Oakland (DEPART_CITY) airport from the list.</doc>
+<tags>
+<tag>Book_Flight</tag>
+<tag>Southwest</tag>
+</tags>
+<status status="PASS" endtime="20190121 19:38:08.241" critical="yes" starttime="20190121 19:38:02.358"></status>
+</test>
+<test id="s1-t5" name="Select Arrival Airport From Search For Las - LAS">
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>${TEXTBOX_ARRIVAL}</arg>
+<arg>Las</arg>
+</arguments>
+<msg timestamp="20190121 19:38:08.245" level="INFO">Typing text 'Las' into text field 'id=air-city-arrival'.</msg>
+<status status="PASS" endtime="20190121 19:38:09.880" starttime="20190121 19:38:08.244"></status>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes screenshot of the current page and embeds it into log file.</doc>
+<msg timestamp="20190121 19:38:10.747" html="yes" level="INFO">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-3.png"&gt;&lt;img src="selenium-screenshot-3.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" endtime="20190121 19:38:10.748" starttime="20190121 19:38:09.881"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>${TEXTBOX_ARRIVAL}</arg>
+</arguments>
+<msg timestamp="20190121 19:38:10.749" level="INFO">Clicking element 'id=air-city-arrival'.</msg>
+<status status="PASS" endtime="20190121 19:38:11.821" starttime="20190121 19:38:10.748"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath=id('${ID_AIRPORT_ARRIVAL}')/li[contains(text(),'${ARRIVAL_CITY}')]</arg>
+</arguments>
+<msg timestamp="20190121 19:38:11.822" level="INFO">Clicking element 'xpath=id('air-city-arrival-menu')/li[contains(text(),'Las Vegas')]'.</msg>
+<status status="PASS" endtime="20190121 19:38:12.907" starttime="20190121 19:38:11.821"></status>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes screenshot of the current page and embeds it into log file.</doc>
+<msg timestamp="20190121 19:38:13.763" html="yes" level="INFO">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-4.png"&gt;&lt;img src="selenium-screenshot-4.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" endtime="20190121 19:38:13.764" starttime="20190121 19:38:12.907"></status>
+</kw>
+<doc>Here we are highlighting the feature of searching for a city
+and selecting an airport from the search list returned.
+We are searching for "Las" and picking Las Vegas (ARRIVAL_CITY) airport from the list.</doc>
+<tags>
+<tag>Book_Flight</tag>
+<tag>Southwest</tag>
+</tags>
+<status status="PASS" endtime="20190121 19:38:13.764" critical="yes" starttime="20190121 19:38:08.242"></status>
+</test>
+<test id="s1-t6" name="Validate Results Page Contains Search Criterias Selected">
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks button identified by ``locator``.</doc>
+<arguments>
+<arg>${BUTTON_FLIGHT_SEARCH}</arg>
+</arguments>
+<msg timestamp="20190121 19:38:13.768" level="INFO">Clicking button 'id=jb-booking-form-submit-button'.</msg>
+<status status="PASS" endtime="20190121 19:38:17.348" starttime="20190121 19:38:13.767"></status>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes screenshot of the current page and embeds it into log file.</doc>
+<msg timestamp="20190121 19:38:19.824" html="yes" level="INFO">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-5.png"&gt;&lt;img src="selenium-screenshot-5.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" endtime="20190121 19:38:19.825" starttime="20190121 19:38:17.349"></status>
+</kw>
+<kw name="Element Should Contain" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<arguments>
+<arg>${SECTION_DEPART}</arg>
+<arg>Oakland, CA - OAK to Las Vegas, NV - LAS</arg>
+</arguments>
+<msg timestamp="20190121 19:38:24.311" level="INFO">Element 'id=air-booking-product-0' contains text 'Oakland, CA - OAK to Las Vegas, NV - LAS'.</msg>
+<status status="PASS" endtime="20190121 19:38:24.312" starttime="20190121 19:38:19.825"></status>
+</kw>
+<kw name="Retrieve Depart And Return Date From Results Page" library="southwest_flight_booking">
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<arguments>
+<arg>${SECTION_DEPART}</arg>
+</arguments>
+<msg timestamp="20190121 19:38:24.834" level="INFO">Current page contains element 'id=air-booking-product-0'.</msg>
+<status status="PASS" endtime="20190121 19:38:24.835" starttime="20190121 19:38:24.313"></status>
+</kw>
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<arguments>
+<arg>${SECTION_RETURN}</arg>
+</arguments>
+<msg timestamp="20190121 19:38:25.355" level="INFO">Current page contains element 'id=air-booking-product-1'.</msg>
+<status status="PASS" endtime="20190121 19:38:25.355" starttime="20190121 19:38:24.835"></status>
+</kw>
+<kw name="Get WebElements" library="SeleniumLibrary">
+<doc>Returns list of WebElement objects matching the ``locator``.</doc>
+<arguments>
+<arg>${LABEL_FLIGHT_DEPART_RETURN_DATES_SELECTED}</arg>
+</arguments>
+<assign>
+<var>@{list_select}</var>
+</assign>
+<msg timestamp="20190121 19:38:25.884" level="INFO">@{list_select} = [ &lt;selenium.webdriver.remote.webelement.WebElement (session="5f70abced0d5607f21fb0cc800a67924", element="0.21322172622291147-3")&gt; | &lt;selenium.webdriver.remote.webelement.WebElement (session="5f70abced...</msg>
+<status status="PASS" endtime="20190121 19:38:25.884" starttime="20190121 19:38:25.356"></status>
+</kw>
+<kw name="Length Should Be" library="BuiltIn">
+<doc>Verifies that the length of the given item is correct.</doc>
+<arguments>
+<arg>${list_select}</arg>
+<arg>2</arg>
+</arguments>
+<msg timestamp="20190121 19:38:25.885" level="INFO">Length is 2</msg>
+<status status="PASS" endtime="20190121 19:38:25.885" starttime="20190121 19:38:25.884"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>@{list_select}[0]</arg>
+</arguments>
+<assign>
+<var>${depart_selected_element}</var>
+</assign>
+<msg timestamp="20190121 19:38:25.886" level="INFO">${depart_selected_element} = &lt;selenium.webdriver.remote.webelement.WebElement (session="5f70abced0d5607f21fb0cc800a67924", element="0.21322172622291147-3")&gt;</msg>
+<status status="PASS" endtime="20190121 19:38:25.886" starttime="20190121 19:38:25.885"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${depart_date_selected}</arg>
+<arg>${depart_selected_element.text}</arg>
+</arguments>
+<msg timestamp="20190121 19:38:26.420" level="INFO">${depart_date_selected} = THU
+May 23</msg>
+<status status="PASS" endtime="20190121 19:38:26.421" starttime="20190121 19:38:25.887"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>@{list_select}[1]</arg>
+</arguments>
+<assign>
+<var>${return_selected_element}</var>
+</assign>
+<msg timestamp="20190121 19:38:26.422" level="INFO">${return_selected_element} = &lt;selenium.webdriver.remote.webelement.WebElement (session="5f70abced0d5607f21fb0cc800a67924", element="0.21322172622291147-4")&gt;</msg>
+<status status="PASS" endtime="20190121 19:38:26.422" starttime="20190121 19:38:26.421"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${return_date_selected}</arg>
+<arg>${return_selected_element.text}</arg>
+</arguments>
+<msg timestamp="20190121 19:38:26.947" level="INFO">${return_date_selected} = MON
+Jun 10</msg>
+<status status="PASS" endtime="20190121 19:38:26.947" starttime="20190121 19:38:26.423"></status>
+</kw>
+<status status="PASS" endtime="20190121 19:38:26.948" starttime="20190121 19:38:24.312"></status>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${depart_date_selected}</arg>
+<arg>THU\nMay 23</arg>
+</arguments>
+<status status="PASS" endtime="20190121 19:38:26.949" starttime="20190121 19:38:26.948"></status>
+</kw>
+<kw name="Element Should Contain" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<arguments>
+<arg>${SECTION_RETURN}</arg>
+<arg>Las Vegas, NV - LAS to Oakland, CA - OAK</arg>
+</arguments>
+<msg timestamp="20190121 19:38:28.926" level="INFO">Element 'id=air-booking-product-1' contains text 'Las Vegas, NV - LAS to Oakland, CA - OAK'.</msg>
+<status status="PASS" endtime="20190121 19:38:28.926" starttime="20190121 19:38:26.950"></status>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${return_date_selected}</arg>
+<arg>MON\nJun 10</arg>
+</arguments>
+<status status="PASS" endtime="20190121 19:38:28.928" starttime="20190121 19:38:28.927"></status>
+</kw>
+<doc>Here we are doing the validation for the results page.
+We are making sure the first and return flight information is correct.
+Because Southwest has so many different date formats that they use on various pages,
+I did not parameterize this validation.
+Though I would in a real scenario if I was writing more tests like this.
+See "Validate Departure And Arrival Dates On Trip And Price Details Page" where something was done
+to validate another date format that Southwest uses.</doc>
+<tags>
+<tag>Book_Flight</tag>
+<tag>Southwest</tag>
+</tags>
+<status status="PASS" endtime="20190121 19:38:28.928" critical="yes" starttime="20190121 19:38:13.765"></status>
+</test>
+<test id="s1-t7" name="Filter Non-Stop Flights And Verify">
+<kw name="Retrieve Depart And Return Nonstop Button Status" library="southwest_flight_booking">
+<kw name="Get WebElements" library="SeleniumLibrary">
+<doc>Returns list of WebElement objects matching the ``locator``.</doc>
+<arguments>
+<arg>class=checkbox--content</arg>
+</arguments>
+<assign>
+<var>@{list_radio_status}</var>
+</assign>
+<msg timestamp="20190121 19:38:29.459" level="INFO">@{list_radio_status} = [ &lt;selenium.webdriver.remote.webelement.WebElement (session="5f70abced0d5607f21fb0cc800a67924", element="0.21322172622291147-5")&gt; | &lt;selenium.webdriver.remote.webelement.WebElement (session="5f70abced...</msg>
+<status status="PASS" endtime="20190121 19:38:29.459" starttime="20190121 19:38:28.931"></status>
+</kw>
+<kw name="Length Should Be" library="BuiltIn">
+<doc>Verifies that the length of the given item is correct.</doc>
+<arguments>
+<arg>${list_radio_status}</arg>
+<arg>2</arg>
+</arguments>
+<msg timestamp="20190121 19:38:29.460" level="INFO">Length is 2</msg>
+<status status="PASS" endtime="20190121 19:38:29.460" starttime="20190121 19:38:29.459"></status>
+</kw>
+<kw name="Log List" library="Collections">
+<doc>Logs the length and contents of the ``list`` using given ``level``.</doc>
+<arguments>
+<arg>${list_radio_status}</arg>
+</arguments>
+<msg timestamp="20190121 19:38:29.461" level="INFO">List length is 2 and it contains following items:
+0: &lt;selenium.webdriver.remote.webelement.WebElement (session="5f70abced0d5607f21fb0cc800a67924", element="0.21322172622291147-5")&gt;
+1: &lt;selenium.webdriver.remote.webelement.WebElement (session="5f70abced0d5607f21fb0cc800a67924", element="0.21322172622291147-6")&gt;</msg>
+<status status="PASS" endtime="20190121 19:38:29.462" starttime="20190121 19:38:29.461"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${depart_nonstop_radio}</arg>
+<arg>@{list_radio_status}[0]</arg>
+</arguments>
+<msg timestamp="20190121 19:38:29.465" level="INFO">${depart_nonstop_radio} = &lt;selenium.webdriver.remote.webelement.WebElement (session="5f70abced0d5607f21fb0cc800a67924", element="0.21322172622291147-5")&gt;</msg>
+<status status="PASS" endtime="20190121 19:38:29.466" starttime="20190121 19:38:29.462"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${return_nonstop_radio}</arg>
+<arg>@{list_radio_status}[1]</arg>
+</arguments>
+<msg timestamp="20190121 19:38:29.469" level="INFO">${return_nonstop_radio} = &lt;selenium.webdriver.remote.webelement.WebElement (session="5f70abced0d5607f21fb0cc800a67924", element="0.21322172622291147-6")&gt;</msg>
+<status status="PASS" endtime="20190121 19:38:29.469" starttime="20190121 19:38:29.466"></status>
+</kw>
+<status status="PASS" endtime="20190121 19:38:29.469" starttime="20190121 19:38:28.931"></status>
+</kw>
+<kw name="Checkbox Should Not Be Selected" library="SeleniumLibrary">
+<doc>Verifies checkbox ``locator`` is not selected/checked.</doc>
+<arguments>
+<arg>${depart_nonstop_radio}</arg>
+</arguments>
+<msg timestamp="20190121 19:38:29.470" level="INFO">Verifying checkbox '&lt;selenium.webdriver.remote.webelement.WebElement (session="5f70abced0d5607f21fb0cc800a67924", element="0.21322172622291147-5")&gt;' is not selected.</msg>
+<status status="PASS" endtime="20190121 19:38:29.989" starttime="20190121 19:38:29.470"></status>
+</kw>
+<kw name="Checkbox Should Not Be Selected" library="SeleniumLibrary">
+<doc>Verifies checkbox ``locator`` is not selected/checked.</doc>
+<arguments>
+<arg>${return_nonstop_radio}</arg>
+</arguments>
+<msg timestamp="20190121 19:38:29.990" level="INFO">Verifying checkbox '&lt;selenium.webdriver.remote.webelement.WebElement (session="5f70abced0d5607f21fb0cc800a67924", element="0.21322172622291147-6")&gt;' is not selected.</msg>
+<status status="PASS" endtime="20190121 19:38:30.518" starttime="20190121 19:38:29.990"></status>
+</kw>
+<kw name="Select Checkbox" library="SeleniumLibrary">
+<doc>Selects checkbox identified by ``locator``.</doc>
+<arguments>
+<arg>${depart_nonstop_radio}</arg>
+</arguments>
+<msg timestamp="20190121 19:38:30.519" level="INFO">Selecting checkbox '&lt;selenium.webdriver.remote.webelement.WebElement (session="5f70abced0d5607f21fb0cc800a67924", element="0.21322172622291147-5")&gt;'.</msg>
+<status status="PASS" endtime="20190121 19:38:31.772" starttime="20190121 19:38:30.518"></status>
+</kw>
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` contains exact text ``expected``.</doc>
+<arguments>
+<arg>${LABEL_FLIGHT_STATUS_NONSTOP}</arg>
+<arg>Nonstop</arg>
+</arguments>
+<msg timestamp="20190121 19:38:31.773" level="INFO">Verifying element 'class=select-detail--flight-stops-badge' contains exact text 'Nonstop'.</msg>
+<status status="PASS" endtime="20190121 19:38:32.908" starttime="20190121 19:38:31.772"></status>
+</kw>
+<tags>
+<tag>Book_Flight</tag>
+<tag>Southwest</tag>
+</tags>
+<status status="PASS" endtime="20190121 19:38:32.908" critical="yes" starttime="20190121 19:38:28.929"></status>
+</test>
+<test id="s1-t8" name="Select The First Nonstop Departure Flight">
+<kw name="Retrieve Available Flight By Index Order" library="southwest_flight_booking">
+<arguments>
+<arg>flight_flag=depart</arg>
+<arg>flight_index=1</arg>
+</arguments>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${flight_flag}' == 'depart'</arg>
+<arg>Set Suite Variable</arg>
+<arg>${flag}</arg>
+<arg>0</arg>
+</arguments>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${flag}</arg>
+<arg>0</arg>
+</arguments>
+<msg timestamp="20190121 19:38:32.916" level="INFO">${flag} = 0</msg>
+<status status="PASS" endtime="20190121 19:38:32.917" starttime="20190121 19:38:32.913"></status>
+</kw>
+<status status="PASS" endtime="20190121 19:38:32.917" starttime="20190121 19:38:32.912"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${flight_flag}' == 'return'</arg>
+<arg>Set Suite Variable</arg>
+<arg>${flag}</arg>
+<arg>1</arg>
+</arguments>
+<status status="PASS" endtime="20190121 19:38:32.918" starttime="20190121 19:38:32.917"></status>
+</kw>
+<kw name="Get WebElements" library="SeleniumLibrary">
+<doc>Returns list of WebElement objects matching the ``locator``.</doc>
+<arguments>
+<arg>xpath=//*[@id="air-booking-fares-${flag}-${flight_index}"]/div</arg>
+</arguments>
+<assign>
+<var>@{elements}</var>
+</assign>
+<msg timestamp="20190121 19:38:33.441" level="INFO">@{elements} = [ &lt;selenium.webdriver.remote.webelement.WebElement (session="5f70abced0d5607f21fb0cc800a67924", element="0.21322172622291147-59")&gt; | &lt;selenium.webdriver.remote.webelement.WebElement (session="5f70abce...</msg>
+<status status="PASS" endtime="20190121 19:38:33.441" starttime="20190121 19:38:32.918"></status>
+</kw>
+<kw name="Length Should Be" library="BuiltIn">
+<doc>Verifies that the length of the given item is correct.</doc>
+<arguments>
+<arg>${elements}</arg>
+<arg>3</arg>
+</arguments>
+<msg timestamp="20190121 19:38:33.442" level="INFO">Length is 3</msg>
+<status status="PASS" endtime="20190121 19:38:33.443" starttime="20190121 19:38:33.442"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${business_select_element}</arg>
+<arg>@{elements}[0]</arg>
+</arguments>
+<msg timestamp="20190121 19:38:33.447" level="INFO">${business_select_element} = &lt;selenium.webdriver.remote.webelement.WebElement (session="5f70abced0d5607f21fb0cc800a67924", element="0.21322172622291147-59")&gt;</msg>
+<status status="PASS" endtime="20190121 19:38:33.447" starttime="20190121 19:38:33.443"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${business_select_price}</arg>
+<arg>${business_select_element.text}</arg>
+</arguments>
+<msg timestamp="20190121 19:38:33.988" level="INFO">${business_select_price} = $330</msg>
+<status status="PASS" endtime="20190121 19:38:33.988" starttime="20190121 19:38:33.448"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${anytime_element}</arg>
+<arg>@{elements}[1]</arg>
+</arguments>
+<msg timestamp="20190121 19:38:33.994" level="INFO">${anytime_element} = &lt;selenium.webdriver.remote.webelement.WebElement (session="5f70abced0d5607f21fb0cc800a67924", element="0.21322172622291147-60")&gt;</msg>
+<status status="PASS" endtime="20190121 19:38:33.994" starttime="20190121 19:38:33.989"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${anytime_price}</arg>
+<arg>${anytime_element.text}</arg>
+</arguments>
+<msg timestamp="20190121 19:38:34.527" level="INFO">${anytime_price} = $314</msg>
+<status status="PASS" endtime="20190121 19:38:34.527" starttime="20190121 19:38:33.994"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${wanna_get_away_element}</arg>
+<arg>@{elements}[2]</arg>
+</arguments>
+<msg timestamp="20190121 19:38:34.532" level="INFO">${wanna_get_away_element} = &lt;selenium.webdriver.remote.webelement.WebElement (session="5f70abced0d5607f21fb0cc800a67924", element="0.21322172622291147-61")&gt;</msg>
+<status status="PASS" endtime="20190121 19:38:34.532" starttime="20190121 19:38:34.528"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${wanna_get_away_price}</arg>
+<arg>${wanna_get_away_element.text}</arg>
+</arguments>
+<msg timestamp="20190121 19:38:35.063" level="INFO">${wanna_get_away_price} = $107</msg>
+<status status="PASS" endtime="20190121 19:38:35.063" starttime="20190121 19:38:34.532"></status>
+</kw>
+<status status="PASS" endtime="20190121 19:38:35.064" starttime="20190121 19:38:32.911"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Business Select Price:${business_select_price}</arg>
+</arguments>
+<msg timestamp="20190121 19:38:35.065" level="INFO">Business Select Price:$330</msg>
+<status status="PASS" endtime="20190121 19:38:35.065" starttime="20190121 19:38:35.064"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Anytime Price:${anytime_price}</arg>
+</arguments>
+<msg timestamp="20190121 19:38:35.066" level="INFO">Anytime Price:$314</msg>
+<status status="PASS" endtime="20190121 19:38:35.066" starttime="20190121 19:38:35.066"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Wanna Get Away Price:${wanna_get_away_price}</arg>
+</arguments>
+<msg timestamp="20190121 19:38:35.067" level="INFO">Wanna Get Away Price:$107</msg>
+<status status="PASS" endtime="20190121 19:38:35.067" starttime="20190121 19:38:35.067"></status>
+</kw>
+<kw name="Fetch From Right" library="String">
+<doc>Returns contents of the ``string`` after the last occurrence of ``marker``.</doc>
+<arguments>
+<arg>${wanna_get_away_price}</arg>
+<arg>$</arg>
+</arguments>
+<assign>
+<var>${depart_wanna_get_away_price}</var>
+</assign>
+<msg timestamp="20190121 19:38:35.069" level="INFO">${depart_wanna_get_away_price} = 107</msg>
+<status status="PASS" endtime="20190121 19:38:35.069" starttime="20190121 19:38:35.068"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${depart_wanna_get_away_price}</arg>
+</arguments>
+<msg timestamp="20190121 19:38:35.070" level="INFO">${depart_wanna_get_away_price} = 107</msg>
+<status status="PASS" endtime="20190121 19:38:35.070" starttime="20190121 19:38:35.069"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>${wanna_get_away_element}</arg>
+</arguments>
+<msg timestamp="20190121 19:38:35.071" level="INFO">Clicking element '&lt;selenium.webdriver.remote.webelement.WebElement (session="5f70abced0d5607f21fb0cc800a67924", element="0.21322172622291147-61")&gt;'.</msg>
+<status status="PASS" endtime="20190121 19:38:35.708" starttime="20190121 19:38:35.071"></status>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes screenshot of the current page and embeds it into log file.</doc>
+<msg timestamp="20190121 19:38:36.549" html="yes" level="INFO">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-6.png"&gt;&lt;img src="selenium-screenshot-6.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" endtime="20190121 19:38:36.550" starttime="20190121 19:38:35.710"></status>
+</kw>
+<doc>Here we are selecting the first nonstop flight as it was not specified.
+If we had to select the cheapest flight, we have the elements and
+we can iterate through them to find the min price.</doc>
+<tags>
+<tag>Book_Flight</tag>
+<tag>Southwest</tag>
+</tags>
+<status status="PASS" endtime="20190121 19:38:36.551" critical="yes" starttime="20190121 19:38:32.909"></status>
+</test>
+<test id="s1-t9" name="Select The First Nonstop Return Flight - Wanna Get Away">
+<kw name="Retrieve Available Flight By Index Order" library="southwest_flight_booking">
+<arguments>
+<arg>flight_flag=return</arg>
+<arg>flight_index=1</arg>
+</arguments>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${flight_flag}' == 'depart'</arg>
+<arg>Set Suite Variable</arg>
+<arg>${flag}</arg>
+<arg>0</arg>
+</arguments>
+<status status="PASS" endtime="20190121 19:38:36.556" starttime="20190121 19:38:36.555"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${flight_flag}' == 'return'</arg>
+<arg>Set Suite Variable</arg>
+<arg>${flag}</arg>
+<arg>1</arg>
+</arguments>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${flag}</arg>
+<arg>1</arg>
+</arguments>
+<msg timestamp="20190121 19:38:36.558" level="INFO">${flag} = 1</msg>
+<status status="PASS" endtime="20190121 19:38:36.559" starttime="20190121 19:38:36.557"></status>
+</kw>
+<status status="PASS" endtime="20190121 19:38:36.559" starttime="20190121 19:38:36.556"></status>
+</kw>
+<kw name="Get WebElements" library="SeleniumLibrary">
+<doc>Returns list of WebElement objects matching the ``locator``.</doc>
+<arguments>
+<arg>xpath=//*[@id="air-booking-fares-${flag}-${flight_index}"]/div</arg>
+</arguments>
+<assign>
+<var>@{elements}</var>
+</assign>
+<msg timestamp="20190121 19:38:37.090" level="INFO">@{elements} = [ &lt;selenium.webdriver.remote.webelement.WebElement (session="5f70abced0d5607f21fb0cc800a67924", element="0.21322172622291147-62")&gt; | &lt;selenium.webdriver.remote.webelement.WebElement (session="5f70abce...</msg>
+<status status="PASS" endtime="20190121 19:38:37.090" starttime="20190121 19:38:36.559"></status>
+</kw>
+<kw name="Length Should Be" library="BuiltIn">
+<doc>Verifies that the length of the given item is correct.</doc>
+<arguments>
+<arg>${elements}</arg>
+<arg>3</arg>
+</arguments>
+<msg timestamp="20190121 19:38:37.091" level="INFO">Length is 3</msg>
+<status status="PASS" endtime="20190121 19:38:37.091" starttime="20190121 19:38:37.090"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${business_select_element}</arg>
+<arg>@{elements}[0]</arg>
+</arguments>
+<msg timestamp="20190121 19:38:37.093" level="INFO">${business_select_element} = &lt;selenium.webdriver.remote.webelement.WebElement (session="5f70abced0d5607f21fb0cc800a67924", element="0.21322172622291147-62")&gt;</msg>
+<status status="PASS" endtime="20190121 19:38:37.093" starttime="20190121 19:38:37.092"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${business_select_price}</arg>
+<arg>${business_select_element.text}</arg>
+</arguments>
+<msg timestamp="20190121 19:38:37.623" level="INFO">${330} = $330</msg>
+<status status="PASS" endtime="20190121 19:38:37.623" starttime="20190121 19:38:37.093"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${anytime_element}</arg>
+<arg>@{elements}[1]</arg>
+</arguments>
+<msg timestamp="20190121 19:38:37.625" level="INFO">${anytime_element} = &lt;selenium.webdriver.remote.webelement.WebElement (session="5f70abced0d5607f21fb0cc800a67924", element="0.21322172622291147-63")&gt;</msg>
+<status status="PASS" endtime="20190121 19:38:37.625" starttime="20190121 19:38:37.624"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${anytime_price}</arg>
+<arg>${anytime_element.text}</arg>
+</arguments>
+<msg timestamp="20190121 19:38:38.164" level="INFO">${314} = $314</msg>
+<status status="PASS" endtime="20190121 19:38:38.164" starttime="20190121 19:38:37.625"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${wanna_get_away_element}</arg>
+<arg>@{elements}[2]</arg>
+</arguments>
+<msg timestamp="20190121 19:38:38.166" level="INFO">${wanna_get_away_element} = &lt;selenium.webdriver.remote.webelement.WebElement (session="5f70abced0d5607f21fb0cc800a67924", element="0.21322172622291147-64")&gt;</msg>
+<status status="PASS" endtime="20190121 19:38:38.166" starttime="20190121 19:38:38.165"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${wanna_get_away_price}</arg>
+<arg>${wanna_get_away_element.text}</arg>
+</arguments>
+<msg timestamp="20190121 19:38:38.707" level="INFO">${107} = $95</msg>
+<status status="PASS" endtime="20190121 19:38:38.707" starttime="20190121 19:38:38.166"></status>
+</kw>
+<status status="PASS" endtime="20190121 19:38:38.708" starttime="20190121 19:38:36.554"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Business Select Price:${business_select_price}</arg>
+</arguments>
+<msg timestamp="20190121 19:38:38.709" level="INFO">Business Select Price:$330</msg>
+<status status="PASS" endtime="20190121 19:38:38.709" starttime="20190121 19:38:38.708"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Anytime Price:${anytime_price}</arg>
+</arguments>
+<msg timestamp="20190121 19:38:38.710" level="INFO">Anytime Price:$314</msg>
+<status status="PASS" endtime="20190121 19:38:38.710" starttime="20190121 19:38:38.710"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Wanna Get Away Price:${wanna_get_away_price}</arg>
+</arguments>
+<msg timestamp="20190121 19:38:38.711" level="INFO">Wanna Get Away Price:$107</msg>
+<status status="PASS" endtime="20190121 19:38:38.711" starttime="20190121 19:38:38.711"></status>
+</kw>
+<kw name="Fetch From Right" library="String">
+<doc>Returns contents of the ``string`` after the last occurrence of ``marker``.</doc>
+<arguments>
+<arg>${wanna_get_away_price}</arg>
+<arg>$</arg>
+</arguments>
+<assign>
+<var>${return_wanna_get_away_price}</var>
+</assign>
+<msg timestamp="20190121 19:38:38.713" level="INFO">${return_wanna_get_away_price} = 107</msg>
+<status status="PASS" endtime="20190121 19:38:38.713" starttime="20190121 19:38:38.712"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${return_wanna_get_away_price}</arg>
+</arguments>
+<msg timestamp="20190121 19:38:38.714" level="INFO">${return_wanna_get_away_price} = 107</msg>
+<status status="PASS" endtime="20190121 19:38:38.714" starttime="20190121 19:38:38.713"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>${wanna_get_away_element}</arg>
+</arguments>
+<msg timestamp="20190121 19:38:38.716" level="INFO">Clicking element '&lt;selenium.webdriver.remote.webelement.WebElement (session="5f70abced0d5607f21fb0cc800a67924", element="0.21322172622291147-64")&gt;'.</msg>
+<status status="PASS" endtime="20190121 19:38:39.440" starttime="20190121 19:38:38.715"></status>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes screenshot of the current page and embeds it into log file.</doc>
+<msg timestamp="20190121 19:38:40.232" html="yes" level="INFO">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-7.png"&gt;&lt;img src="selenium-screenshot-7.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" endtime="20190121 19:38:40.232" starttime="20190121 19:38:39.440"></status>
+</kw>
+<doc>Here we are selecting the first nonstop flight as it was not specified.
+If we had to select the cheapest flight, we have the elements and
+we can iterate through them to find the min price.</doc>
+<tags>
+<tag>Book_Flight</tag>
+<tag>Southwest</tag>
+</tags>
+<status status="PASS" endtime="20190121 19:38:40.233" critical="yes" starttime="20190121 19:38:36.552"></status>
+</test>
+<test id="s1-t10" name="Continue To Trip Price Details Page And Validate">
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>${BUTTON_CONTINUE_BOOKING}</arg>
+</arguments>
+<msg timestamp="20190121 19:38:40.237" level="INFO">Clicking element 'id=air-booking-product-2'.</msg>
+<status status="PASS" endtime="20190121 19:38:41.437" starttime="20190121 19:38:40.236"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>(${PASSENGER_COUNT}*${depart_wanna_get_away_price})+(${PASSENGER_COUNT}*${return_wanna_get_away_price})</arg>
+</arguments>
+<assign>
+<var>${calculated_total}</var>
+</assign>
+<msg timestamp="20190121 19:38:41.440" level="INFO">${calculated_total} = 428</msg>
+<status status="PASS" endtime="20190121 19:38:41.440" starttime="20190121 19:38:41.438"></status>
+</kw>
+<kw name="Validate Total On Trip And Price Details Page" library="southwest_flight_booking">
+<arguments>
+<arg>calculated_total=${calculated_total}</arg>
+</arguments>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>${CONFIRMATION_TOTAL_AMOUNT_DUE}</arg>
+<arg>timeout=5s</arg>
+</arguments>
+<status status="PASS" endtime="20190121 19:38:42.704" starttime="20190121 19:38:41.442"></status>
+</kw>
+<kw name="Get WebElement" library="SeleniumLibrary">
+<doc>Returns the first WebElement matching the given ``locator``.</doc>
+<arguments>
+<arg>${CONFIRMATION_TOTAL_AMOUNT_DUE}</arg>
+</arguments>
+<assign>
+<var>${cart_total_element}</var>
+</assign>
+<msg timestamp="20190121 19:38:43.223" level="INFO">${cart_total_element} = &lt;selenium.webdriver.remote.webelement.WebElement (session="5f70abced0d5607f21fb0cc800a67924", element="0.21322172622291147-66")&gt;</msg>
+<status status="PASS" endtime="20190121 19:38:43.223" starttime="20190121 19:38:42.705"></status>
+</kw>
+<kw name="Fetch From Right" library="String">
+<doc>Returns contents of the ``string`` after the last occurrence of ``marker``.</doc>
+<arguments>
+<arg>${cart_total_element.text}</arg>
+<arg>$</arg>
+</arguments>
+<assign>
+<var>${cart_subtotal}</var>
+</assign>
+<msg timestamp="20190121 19:38:43.754" level="INFO">${cart_subtotal} = 403.92</msg>
+<status status="PASS" endtime="20190121 19:38:43.754" starttime="20190121 19:38:43.223"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Cart Total:${cart_subtotal}</arg>
+</arguments>
+<msg timestamp="20190121 19:38:43.755" level="INFO">Cart Total:403.92</msg>
+<status status="PASS" endtime="20190121 19:38:43.755" starttime="20190121 19:38:43.755"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${cart_subtotal}&lt;=${calculated_total}</arg>
+</arguments>
+<status status="PASS" endtime="20190121 19:38:43.757" starttime="20190121 19:38:43.756"></status>
+</kw>
+<status status="PASS" endtime="20190121 19:38:43.757" starttime="20190121 19:38:41.440"></status>
+</kw>
+<kw name="Validate Departure And Arrival Dates On Trip And Price Details Page" library="southwest_flight_booking">
+<arguments>
+<arg>depart_date=${DEPART_DATE}</arg>
+<arg>return_date=${RETURN_DATE}</arg>
+</arguments>
+<kw name="Date With Day Of Week Appended" library="southwest_date_helper">
+<doc>Simple function to take a date in the format %m/%d/%Y and return a shortened version with the 
+last 2 digits of the year along with the day of the week.
+For example, given departure 05/23/2019 return 5/23/19 Thursday
+This is used to validate any date printed on Southwest's page in the format like 5/23/19 Thursday.</doc>
+<arguments>
+<arg>${depart_date}</arg>
+</arguments>
+<assign>
+<var>${depart_formatted_day_of_week}</var>
+</assign>
+<msg timestamp="20190121 19:38:43.759" level="INFO">${depart_formatted_day_of_week} = 5/23/19 Thursday</msg>
+<status status="PASS" endtime="20190121 19:38:43.759" starttime="20190121 19:38:43.759"></status>
+</kw>
+<kw name="Date With Day Of Week Appended" library="southwest_date_helper">
+<doc>Simple function to take a date in the format %m/%d/%Y and return a shortened version with the 
+last 2 digits of the year along with the day of the week.
+For example, given departure 05/23/2019 return 5/23/19 Thursday
+This is used to validate any date printed on Southwest's page in the format like 5/23/19 Thursday.</doc>
+<arguments>
+<arg>${return_date}</arg>
+</arguments>
+<assign>
+<var>${return_formatted_day_of_week}</var>
+</assign>
+<msg timestamp="20190121 19:38:43.760" level="INFO">${return_formatted_day_of_week} = 6/10/19 Monday</msg>
+<status status="PASS" endtime="20190121 19:38:43.761" starttime="20190121 19:38:43.760"></status>
+</kw>
+<kw name="Get WebElements" library="SeleniumLibrary">
+<doc>Returns list of WebElement objects matching the ``locator``.</doc>
+<arguments>
+<arg>${CONFIRMATION_FLIGHT_DETAILS_DATES}</arg>
+</arguments>
+<assign>
+<var>@{elements}</var>
+</assign>
+<msg timestamp="20190121 19:38:44.279" level="INFO">@{elements} = [ &lt;selenium.webdriver.remote.webelement.WebElement (session="5f70abced0d5607f21fb0cc800a67924", element="0.21322172622291147-68")&gt; | &lt;selenium.webdriver.remote.webelement.WebElement (session="5f70abce...</msg>
+<status status="PASS" endtime="20190121 19:38:44.279" starttime="20190121 19:38:43.761"></status>
+</kw>
+<kw name="Length Should Be" library="BuiltIn">
+<doc>Verifies that the length of the given item is correct.</doc>
+<arguments>
+<arg>${elements}</arg>
+<arg>2</arg>
+</arguments>
+<msg timestamp="20190121 19:38:44.280" level="INFO">Length is 2</msg>
+<status status="PASS" endtime="20190121 19:38:44.280" starttime="20190121 19:38:44.279"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${depart_date_element}</arg>
+<arg>@{elements}[0]</arg>
+</arguments>
+<msg timestamp="20190121 19:38:44.285" level="INFO">${depart_date_element} = &lt;selenium.webdriver.remote.webelement.WebElement (session="5f70abced0d5607f21fb0cc800a67924", element="0.21322172622291147-68")&gt;</msg>
+<status status="PASS" endtime="20190121 19:38:44.286" starttime="20190121 19:38:44.281"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${page_depart_date}</arg>
+<arg>${depart_date_element.text}</arg>
+</arguments>
+<msg timestamp="20190121 19:38:44.813" level="INFO">${page_depart_date} = 5/23/19 Thursday</msg>
+<status status="PASS" endtime="20190121 19:38:44.813" starttime="20190121 19:38:44.286"></status>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${depart_formatted_day_of_week}</arg>
+<arg>${page_depart_date}</arg>
+</arguments>
+<msg timestamp="20190121 19:38:44.815" level="INFO">Argument types are:
+&lt;type 'str'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" endtime="20190121 19:38:44.815" starttime="20190121 19:38:44.814"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${return_date_element}</arg>
+<arg>@{elements}[1]</arg>
+</arguments>
+<msg timestamp="20190121 19:38:44.821" level="INFO">${return_date_element} = &lt;selenium.webdriver.remote.webelement.WebElement (session="5f70abced0d5607f21fb0cc800a67924", element="0.21322172622291147-69")&gt;</msg>
+<status status="PASS" endtime="20190121 19:38:44.821" starttime="20190121 19:38:44.816"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${page_return_date}</arg>
+<arg>${return_date_element.text}</arg>
+</arguments>
+<msg timestamp="20190121 19:38:45.347" level="INFO">${page_return_date} = 6/10/19 Monday</msg>
+<status status="PASS" endtime="20190121 19:38:45.347" starttime="20190121 19:38:44.821"></status>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${return_formatted_day_of_week}</arg>
+<arg>${page_return_date}</arg>
+</arguments>
+<msg timestamp="20190121 19:38:45.348" level="INFO">Argument types are:
+&lt;type 'str'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" endtime="20190121 19:38:45.348" starttime="20190121 19:38:45.347"></status>
+</kw>
+<status status="PASS" endtime="20190121 19:38:45.348" starttime="20190121 19:38:43.757"></status>
+</kw>
+<kw name="Validate Departure And Arrival Airports On Trip And Price Details Page" library="southwest_flight_booking">
+<arguments>
+<arg>departure_airport_code=OAK</arg>
+<arg>arrival_airport_code=LAS</arg>
+</arguments>
+<kw name="Get WebElement" library="SeleniumLibrary">
+<doc>Returns the first WebElement matching the given ``locator``.</doc>
+<arguments>
+<arg>${CONFIRMATION_DEPART_ARRIVAL_AIRPORT_CODES}</arg>
+</arguments>
+<assign>
+<var>${header_booking_text}</var>
+</assign>
+<msg timestamp="20190121 19:38:45.873" level="INFO">${header_booking_text} = &lt;selenium.webdriver.remote.webelement.WebElement (session="5f70abced0d5607f21fb0cc800a67924", element="0.21322172622291147-70")&gt;</msg>
+<status status="PASS" endtime="20190121 19:38:45.873" starttime="20190121 19:38:45.350"></status>
+</kw>
+<kw name="Fetch From Left" library="String">
+<doc>Returns contents of the ``string`` before the first occurrence of ``marker``.</doc>
+<arguments>
+<arg>${header_booking_text.text}</arg>
+<arg>${SPACE}</arg>
+</arguments>
+<assign>
+<var>${page_departure_airport}</var>
+</assign>
+<msg timestamp="20190121 19:38:46.406" level="INFO">${page_departure_airport} = OAK</msg>
+<status status="PASS" endtime="20190121 19:38:46.406" starttime="20190121 19:38:45.874"></status>
+</kw>
+<kw name="Fetch From Right" library="String">
+<doc>Returns contents of the ``string`` after the last occurrence of ``marker``.</doc>
+<arguments>
+<arg>${header_booking_text.text}</arg>
+<arg>${SPACE}</arg>
+</arguments>
+<assign>
+<var>${page_arrival_airport}</var>
+</assign>
+<msg timestamp="20190121 19:38:46.930" level="INFO">${page_arrival_airport} = LAS</msg>
+<status status="PASS" endtime="20190121 19:38:46.930" starttime="20190121 19:38:46.407"></status>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${page_departure_airport.strip()}</arg>
+<arg>${departure_airport_code}</arg>
+</arguments>
+<status status="PASS" endtime="20190121 19:38:46.931" starttime="20190121 19:38:46.930"></status>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${page_arrival_airport.strip()}</arg>
+<arg>${arrival_airport_code}</arg>
+</arguments>
+<status status="PASS" endtime="20190121 19:38:46.933" starttime="20190121 19:38:46.932"></status>
+</kw>
+<status status="PASS" endtime="20190121 19:38:46.933" starttime="20190121 19:38:45.349"></status>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes screenshot of the current page and embeds it into log file.</doc>
+<msg timestamp="20190121 19:38:47.696" html="yes" level="INFO">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-8.png"&gt;&lt;img src="selenium-screenshot-8.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" endtime="20190121 19:38:47.696" starttime="20190121 19:38:46.934"></status>
+</kw>
+<tags>
+<tag>Book_Flight</tag>
+<tag>Southwest</tag>
+</tags>
+<status status="PASS" endtime="20190121 19:38:47.697" critical="yes" starttime="20190121 19:38:40.234"></status>
+</test>
+<kw type="teardown" name="Close All Browsers" library="SeleniumLibrary">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" endtime="20190121 19:38:48.344" starttime="20190121 19:38:47.701"></status>
+</kw>
+<doc>This is a suite of tests to verify the scenarios given in the takehome assignment.
+Mainly testing the positive scenario of booking a roundtrip flight and validating at each step.
+We are testing features in the following pages:
+- Southwest flight homepage
+- Southwest flight search results page
+- Southwest trip and price details page</doc>
+<status status="PASS" endtime="20190121 19:38:48.345" starttime="20190121 19:37:40.878"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="0" pass="10">Critical Tests</stat>
+<stat fail="0" pass="10">All Tests</stat>
+</total>
+<tag>
+<stat fail="0" pass="10">Book_Flight</stat>
+<stat fail="0" pass="10">Southwest</stat>
+</tag>
+<suite>
+<stat fail="0" id="s1" name="Book Roundtrip Flight" pass="10">Book Roundtrip Flight</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
