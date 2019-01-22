@@ -67,10 +67,10 @@ Once you clone the repo, you can view report.html or log.html on any browser.
 				
 Executing tests
 ===============
-Executing a single test suite:
-* King_Takehome> sudo robot -P config:libraries:resources:resources_ui tests/flight_bookings/book_roundtrip_flight.robot
-Executing a tests with browser specified:
-* King_Takehome> sudo robot -P config:libraries:resources:resources_ui --variable BROWSER:Chrome tests/flight_bookings/book_roundtrip_flight.robot
-* King_Takehome> sudo robot -P config:libraries:resources:resources_ui --variable BROWSER:Firefox tests/flight_bookings/book_roundtrip_flight.robot
-  * Note: Pre-requisite for browser is that you have to have the drivers installed correctly.    
+* Executing a single test suite:
+  * King_Takehome> sudo robot -P config:libraries:resources:resources_ui tests/flight_bookings/book_roundtrip_flight.robot
+* Executing a tests with browser specified:
+  * King_Takehome> sudo robot -P config:libraries:resources:resources_ui --variable BROWSER:Chrome tests/flight_bookings/book_roundtrip_flight.robot
+  * King_Takehome> sudo robot -P config:libraries:resources:resources_ui --variable BROWSER:Firefox tests/flight_bookings/book_roundtrip_flight.robot
+    * Note: Pre-requisite for browser is that you have to have the drivers installed correctly.    
     
