@@ -3,7 +3,8 @@ Overview
 
 This is a take home assignment from King Entertainment.
 
-See SQE_TakeHome_Web.pdf for more information on the specifications. 
+See [SQE_TakeHome_Web.pdf](SQE_TakeHome_Web.pdf) for more information on the specifications. 
+
 
 Installation 
 ===============
