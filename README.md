@@ -2,6 +2,7 @@ Overview
 ===============
 
 This is a take home assignment from King Entertainment.
+
 See SQE_TakeHome_Web.pdf for more information on the specifications. 
 
 Installation 
@@ -50,6 +51,7 @@ Some people prefer to use PyCharm but I like to use Eclipse since I also work on
 For more information on PyCharm - https://www.jetbrains.com/pycharm/
 
 Below is an Eclipse plug-in for Robot Framework that can be used:
+
 Eclipse RED Robot Framework Plugin - https://github.com/nokia/RED/blob/master/installation.md
 
 
